@@ -1,0 +1,207 @@
+# ============================================================
+# 八丫旺實業官網改版 — 工作清單
+# 批次：Batch-01 全站子頁面建置
+# 日期：2026-03-11
+# 執行者：Claude Opus 4.6
+# 目標：完成 7 個子頁面 + 手機版漢堡選單優化
+# ============================================================
+
+project: 8awan
+batch: "01"
+title: 全站子頁面建置
+date: "2026-03-11"
+goal: >
+  將所有子頁面雛形建置完成，統一深色企業風格，
+  每頁具備完整導航、CTA、響應式支援，
+  讓業主看了心動、促成詢價轉換。
+
+# ── 三位專家推理分析摘要 ──
+expert_analysis:
+  ui_ux_designer:
+    focus: 視覺衝擊力與專業感
+    top_tier:
+      - 每頁高品質大圖 Banner + 統一 page-banner 組件
+      - 卡片式佈局 + hover 微動效
+      - 深色企業質感一致性
+    pitfalls:
+      - 圖片破圖或載入慢
+      - 頁面間風格不一致
+      - 手機版無法導航
+
+  frontend_engineer:
+    focus: 程式碼一致性與效能
+    top_tier:
+      - 共用 CSS pattern 從 index.html 延伸
+      - 漢堡選單純 CSS+JS 實作（30 行內）
+      - Unsplash 直連穩定可靠
+    pitfalls:
+      - 每頁 CSS 各寫各的
+      - 忘記導航高亮當前頁
+      - 響應式斷點不一致
+
+  business_strategist:
+    focus: 銷售漏斗轉換
+    top_tier:
+      - 每頁底部 CTA Strip 引導詢價
+      - 產品頁強調政府採購信任感
+      - 實績案例大圖說故事
+    pitfalls:
+      - 頁面只有資訊沒有行動呼籲
+      - 品牌頁花太多時間做動畫（ROI 低）
+
+# ── 關鍵決策 ──
+decisions:
+  mobile_nav: "漢堡選單 + 滑入動畫（純 CSS+JS）"
+  brand_logos: "文字 + CSS 精緻卡片（避免版權問題）"
+  images: "Unsplash 直連，選高品質空調/工程相關圖"
+  portfolio_cases: "大圖 Gallery + 模擬真實案例名稱（6-8 個）"
+  google_form: "# 佔位 + 明確提示文字"
+  news_content: "擴充至 6-9 則模擬消息"
+
+# ── 工作項目（按業務影響力排序）──
+tasks:
+  - id: T01
+    title: 手機版漢堡選單（全站共用）
+    description: >
+      為所有頁面加入漢堡選單按鈕與滑入式導航面板，
+      同時回頭更新 index.html。影響全站，優先處理。
+    priority: critical
+    status: completed
+    completed_at: "2026-03-11T04:46"
+    files: [index.html, 所有子頁面]
+
+  - id: T02
+    title: intro.html — 關於我們
+    description: >
+      公司介紹、經營理念六宮格、年表/里程碑、
+      據點資訊。建立公司信任感的關鍵頁面。
+    priority: high
+    status: completed
+    completed_at: "2026-03-11T04:49"
+    files: [intro.html]
+    sections:
+      - page-banner（ABOUT US）
+      - 公司簡介區塊
+      - 經營理念六宮格
+      - 服務據點（複用 branches 組件）
+      - CTA Strip
+      - Footer
+
+  - id: T03
+    title: product_list.html — 政府台銀採購
+    description: >
+      7 項政府採購產品卡片，含契約到期日、
+      產品圖片、規格摘要。直接促成詢價的核心頁面。
+    priority: high
+    status: completed
+    completed_at: "2026-03-11T04:50"
+    files: [product_list.html]
+    sections:
+      - page-banner（GOVERNMENT PROCUREMENT）
+      - 採購說明區塊
+      - 7 項產品卡片 Grid
+      - CTA Strip
+      - Footer
+
+  - id: T04
+    title: service_list.html — 中央空調
+    description: >
+      4 項中央空調服務詳細介紹，
+      含冰水主機、VRV、箱型冷氣、快速報價。
+    priority: high
+    status: completed
+    completed_at: "2026-03-11T04:50"
+    files: [service_list.html]
+    sections:
+      - page-banner（CENTRAL AC）
+      - 服務總覽
+      - 4 項服務詳細卡片
+      - 工程快速報價 CTA
+      - Footer
+
+  - id: T05
+    title: album_list.html — 實績案例
+    description: >
+      分類瀏覽工程案例（中央空調/分離式/機台遷移），
+      大圖展示 + 案例說明。社會證明的關鍵頁面。
+    priority: high
+    status: completed
+    completed_at: "2026-03-11T04:50"
+    files: [album_list.html]
+    sections:
+      - page-banner（PORTFOLIO）
+      - 分類 Tab（中央空調/分離式/機台遷移）
+      - 案例 Gallery Grid（6-8 個模擬案例）
+      - CTA Strip
+      - Footer
+
+  - id: T06
+    title: link.html — 品牌專區
+    description: >
+      合作品牌展示，文字 + CSS 卡片呈現。
+      建立品牌信任但對成交影響較低，簡潔即可。
+    priority: medium
+    status: completed
+    completed_at: "2026-03-11T04:51"
+    files: [link.html]
+    sections:
+      - page-banner（BRANDS）
+      - 品牌 Grid 卡片
+      - CTA Strip
+      - Footer
+
+  - id: T07
+    title: news_list.html — 最新消息
+    description: >
+      新聞列表頁，Tab 分類篩選（全部/公告/促銷），
+      擴充至 6-9 則模擬消息。
+    priority: medium
+    status: completed
+    completed_at: "2026-03-11T04:52"
+    files: [news_list.html]
+    sections:
+      - page-banner（NEWS）
+      - 分類 Tab
+      - 新聞卡片列表
+      - Footer
+
+  - id: T08
+    title: join.html — 工班招募
+    description: >
+      招募流程 3 步驟說明 + Google 表單佔位連結。
+      對成交影響最低，簡潔俐落。
+    priority: low
+    status: completed
+    completed_at: "2026-03-11T04:52"
+    files: [join.html]
+    sections:
+      - page-banner（JOIN US）
+      - 招募說明
+      - 3 步驟流程圖
+      - 報名 CTA（# 佔位）
+      - Footer
+
+# ── 完成紀錄 ──
+completion_log:
+  - time: "2026-03-11T04:46"
+    action: "T01 完成 — index.html 加入漢堡選單、mobile-menu、overlay"
+  - time: "2026-03-11T04:49"
+    action: "T02 完成 — intro.html 建置（公司介紹、經營理念六宮格、據點）"
+  - time: "2026-03-11T04:50"
+    action: "T03 完成 — product_list.html 建置（7 項政府採購產品卡片）"
+  - time: "2026-03-11T04:50"
+    action: "T04 完成 — service_list.html 建置（4 項中央空調服務）"
+  - time: "2026-03-11T04:50"
+    action: "T05 完成 — album_list.html 建置（8 個模擬實績案例）"
+  - time: "2026-03-11T04:51"
+    action: "T06 完成 — link.html 建置（15 品牌文字卡片 Grid）"
+  - time: "2026-03-11T04:52"
+    action: "T07 完成 — news_list.html 建置（9 則模擬新聞列表）"
+  - time: "2026-03-11T04:52"
+    action: "T08 完成 — join.html 建置（3 步驟招募流程）"
+  - time: "2026-03-11T04:53"
+    action: "品質檢查通過 — 全頁面含漢堡選單、CTA Strip、Footer、page-banner"
+
+summary: >
+  Batch-01 全部完成。共建置 7 個子頁面 + 1 項全站漢堡選單優化。
+  所有頁面通過一致性品質檢查（導航、CTA、響應式、動畫）。
