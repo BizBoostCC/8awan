@@ -173,9 +173,12 @@ footer { background:#060e1c; border-top:1px solid var(--border); padding:60px 48
   .nav-links { display:none; }
   .hamburger { display:flex; }
   section { padding:64px 24px; }
-  .hero-content { padding:100px 24px 160px; }
-  .hero-stats { right:24px; bottom:40px; gap:24px; }
+  .hero { flex-direction:column; justify-content:center; align-items:stretch; }
+  .hero-content { padding:100px 24px 32px; }
+  .hero-stats { position:static; display:flex; justify-content:center; gap:32px; padding:0 24px 80px; }
+  .stat-item { text-align:center; }
   .stat-num { font-size:28px; }
+  .scroll-hint { display:none; }
   .services-header,.about-strip,.news-grid { grid-template-columns:1fr; }
   .services-grid,.branches-grid { grid-template-columns:1fr; }
   .about-img { height:260px; }
