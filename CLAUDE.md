@@ -169,6 +169,53 @@ Panasonic、Hitachi、Sharp、LG、Sampo、Heran、Hotai、Hawrin、Tecohome 等
 <a href="join.html">工班招募</a>
 ```
 
+## 圖片審查原則（Image Review SOP）
+
+選用或更換圖片時，必須經過以下三階段審查流程：
+
+### 階段一：內容辨識 — 這張圖實際是什麼？
+- **下載並檢視圖片**，不能只憑 URL 或 alt 文字判斷
+- 客觀描述圖中的：人物、設備、動作、場景、色調
+- 問自己：「一個不看 alt 文字的訪客，會認為這張圖在講什麼？」
+
+### 階段二：品牌適配度 — 這張圖適合八丫旺嗎？
+依據以下標準評分（高 / 中 / 低 / 完全不符）：
+
+| 判斷維度 | 說明 |
+|----------|------|
+| **行業相關性** | 圖片是否與冷凍空調、HVAC、家電相關？ |
+| **設備正確性** | 圖中設備是否為空調類（冰水主機、分離式、箱型機、VRV）？電氣配電盤、焊接、窗戶清潔等不算 |
+| **場景合理性** | 場景是否為空調常見環境（機房、辦公室、政府大樓、廠房）？ |
+| **受眾認知** | 台灣 40 歲以上公務員看到此圖，會不會聯想到冷氣空調？ |
+| **情緒基調** | 是否傳達專業、可靠、企業感？（排除休閒、嘻哈、居家烹飪等違和風格） |
+
+### 階段三：替換決策 — 需要換嗎？怎麼找？
+- **完全不符**（P0）：立即更換，如煮飯、嘻哈、擦窗戶
+- **設備/場景錯誤**（P1）：優先更換，如電氣開關、金屬焊接
+- **缺乏空調元素**（P2）：建議更換，如純辦公走廊沒有出風口
+- **基本可用**（P3）：低優先，可接受但有更好選擇
+
+### Unsplash 搜尋關鍵字對照表
+
+| 用途 | 推薦搜尋關鍵字 |
+|------|----------------|
+| 大型空調主機 | `commercial HVAC system`, `chiller plant room`, `rooftop HVAC units` |
+| 空調技師施工 | `HVAC technician`, `air conditioning installation`, `AC repair worker` |
+| 冷氣清洗保養 | `air conditioner maintenance`, `AC filter cleaning`, `split AC service` |
+| 辦公室空調 | `office ceiling air conditioner`, `cassette AC office` |
+| 政府/商業建築 | `government building Taiwan`, `commercial building exterior` |
+| VRV/多聯機 | `VRF outdoor unit`, `commercial air conditioning` |
+| 冰水主機房 | `chiller room`, `cooling plant`, `HVAC mechanical room` |
+
+### 自我檢核清單（每張新圖片必過）
+
+- [ ] 已實際下載並檢視圖片內容（不只看 URL）
+- [ ] 圖中主體與該區塊用途直接相關
+- [ ] 不會讓訪客產生「這張圖放錯了吧？」的疑惑
+- [ ] 沒有與同頁其他圖片重複使用
+- [ ] 圖片 URL 回傳 200（非 404）
+- [ ] alt 文字準確描述圖片實際內容
+
 ## 品質檢查清單
 
 每完成一個頁面，確認以下項目：
@@ -178,7 +225,7 @@ Panasonic、Hitachi、Sharp、LG、Sampo、Heran、Hotai、Hawrin、Tecohome 等
 - [ ] 頁腳結構與首頁一致
 - [ ] `@media(max-width: 900px)` 響應式正常
 - [ ] IntersectionObserver 動畫套用
-- [ ] 圖片有 alt 描述
+- [ ] 圖片有 alt 描述且通過「圖片審查原則」
 - [ ] `<title>` 和 `<meta>` 正確
 - [ ] 所有連結正確（相對路徑）
 - [ ] CTA Strip 存在（footer 前）
