@@ -92,7 +92,7 @@ h2 { font-family:'Noto Serif TC',serif; font-size:clamp(26px,4vw,40px); font-wei
 .benefit-card::before { content:''; position:absolute; bottom:0; left:0; width:0; height:3px; background:var(--orange); transition:width .4s; }
 .benefit-card:hover { background:var(--steel); }
 .benefit-card:hover::before { width:100%; }
-.benefit-icon { font-size:36px; margin-bottom:20px; display:block; }
+.benefit-icon { width:32px; height:3px; background:var(--orange); margin-bottom:20px; display:block; }
 .benefit-num { position:absolute; top:24px; right:24px; font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--border); line-height:1; }
 .benefit-card h3 { font-family:'Noto Serif TC',serif; font-size:18px; font-weight:700; margin-bottom:12px; }
 .benefit-card p { font-size:13px; color:var(--muted); line-height:1.8; font-weight:300; }
@@ -136,7 +136,7 @@ footer { background:#060e1c; border-top:1px solid var(--border); padding:60px 48
   .page-banner { min-height:280px; }
   .page-banner-content { padding:48px 24px; }
   .steps-timeline { grid-template-columns:1fr; gap:48px; max-width:400px; }
-  .steps-timeline::before { top:0; bottom:0; left:50%; width:2px; height:100%; right:auto; }
+  .steps-timeline::before { top:0; bottom:0; left:7px; width:2px; height:100%; right:auto; }
   .step-item { text-align:left; padding-left:48px; }
   .step-dot { margin:0 0 16px 0; position:absolute; left:0; top:44px; }
   .step-dot::before { inset:-5px; }
@@ -238,25 +238,25 @@ footer { background:#060e1c; border-top:1px solid var(--border); padding:60px 48
   <div class="benefits-grid">
     <div class="benefit-card">
       <span class="benefit-num">01</span>
-      <span class="benefit-icon">📋</span>
+      <span class="benefit-icon"></span>
       <h3>穩定工程案源</h3>
       <p>長期承接台灣銀行政府採購標案，公家機關、軍公教單位工程持續供應，工作量穩定不間斷。</p>
     </div>
     <div class="benefit-card">
       <span class="benefit-num">02</span>
-      <span class="benefit-icon">🎓</span>
+      <span class="benefit-icon"></span>
       <h3>專業技術培訓</h3>
       <p>提供完整的冷凍空調工程技術訓練，從分離式冷氣到中央空調系統，持續提升專業技能。</p>
     </div>
     <div class="benefit-card">
       <span class="benefit-num">03</span>
-      <span class="benefit-icon">🛡️</span>
+      <span class="benefit-icon"></span>
       <h3>完善勞健保制度</h3>
       <p>依法提供勞保、健保及勞退提撥，保障您與家人的生活安全，安心投入工作。</p>
     </div>
     <div class="benefit-card">
       <span class="benefit-num">04</span>
-      <span class="benefit-icon">📍</span>
+      <span class="benefit-icon"></span>
       <h3>三據點就近服務</h3>
       <p>高雄總公司、台中及台南據點，可依居住地就近分派，減少通勤負擔，提升生活品質。</p>
     </div>
