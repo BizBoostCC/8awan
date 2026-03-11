@@ -181,15 +181,15 @@ footer { background:#060e1c; border-top:1px solid var(--border); padding:60px 48
 <!-- News Section -->
 <section class="news-section">
   <div class="news-tabs">
-    <div class="tab active">所有消息</div>
-    <div class="tab">企業公告</div>
-    <div class="tab">促銷商品</div>
-    <div class="tab">政府採購</div>
+    <div class="tab active" data-category="all">所有消息</div>
+    <div class="tab" data-category="announce">企業公告</div>
+    <div class="tab" data-category="promo">促銷商品</div>
+    <div class="tab" data-category="purchase">政府採購</div>
   </div>
 
   <div class="news-list">
     <!-- 1 -->
-    <div class="news-item">
+    <div class="news-item" data-category="promo">
       <div class="news-item-date">2025.06.15</div>
       <div class="news-item-body">
         <div class="news-item-top">
@@ -201,7 +201,7 @@ footer { background:#060e1c; border-top:1px solid var(--border); padding:60px 48
       <div class="news-item-arrow">&rarr;</div>
     </div>
     <!-- 2 -->
-    <div class="news-item">
+    <div class="news-item" data-category="announce">
       <div class="news-item-date">2025.05.20</div>
       <div class="news-item-body">
         <div class="news-item-top">
@@ -213,7 +213,7 @@ footer { background:#060e1c; border-top:1px solid var(--border); padding:60px 48
       <div class="news-item-arrow">&rarr;</div>
     </div>
     <!-- 3 -->
-    <div class="news-item">
+    <div class="news-item" data-category="purchase">
       <div class="news-item-date">2025.04.08</div>
       <div class="news-item-body">
         <div class="news-item-top">
@@ -225,7 +225,7 @@ footer { background:#060e1c; border-top:1px solid var(--border); padding:60px 48
       <div class="news-item-arrow">&rarr;</div>
     </div>
     <!-- 4 -->
-    <div class="news-item">
+    <div class="news-item" data-category="announce">
       <div class="news-item-date">2025.03.15</div>
       <div class="news-item-body">
         <div class="news-item-top">
@@ -236,7 +236,7 @@ footer { background:#060e1c; border-top:1px solid var(--border); padding:60px 48
       <div class="news-item-arrow">&rarr;</div>
     </div>
     <!-- 5 -->
-    <div class="news-item">
+    <div class="news-item" data-category="promo">
       <div class="news-item-date">2025.02.28</div>
       <div class="news-item-body">
         <div class="news-item-top">
@@ -247,7 +247,7 @@ footer { background:#060e1c; border-top:1px solid var(--border); padding:60px 48
       <div class="news-item-arrow">&rarr;</div>
     </div>
     <!-- 6 -->
-    <div class="news-item">
+    <div class="news-item" data-category="purchase">
       <div class="news-item-date">2025.02.10</div>
       <div class="news-item-body">
         <div class="news-item-top">
@@ -258,7 +258,7 @@ footer { background:#060e1c; border-top:1px solid var(--border); padding:60px 48
       <div class="news-item-arrow">&rarr;</div>
     </div>
     <!-- 7 -->
-    <div class="news-item">
+    <div class="news-item" data-category="announce">
       <div class="news-item-date">2025.01.20</div>
       <div class="news-item-body">
         <div class="news-item-top">
@@ -269,7 +269,7 @@ footer { background:#060e1c; border-top:1px solid var(--border); padding:60px 48
       <div class="news-item-arrow">&rarr;</div>
     </div>
     <!-- 8 -->
-    <div class="news-item">
+    <div class="news-item" data-category="promo">
       <div class="news-item-date">2025.01.05</div>
       <div class="news-item-body">
         <div class="news-item-top">
@@ -280,7 +280,7 @@ footer { background:#060e1c; border-top:1px solid var(--border); padding:60px 48
       <div class="news-item-arrow">&rarr;</div>
     </div>
     <!-- 9 -->
-    <div class="news-item">
+    <div class="news-item" data-category="announce">
       <div class="news-item-date">2024.12.15</div>
       <div class="news-item-body">
         <div class="news-item-top">
@@ -322,11 +322,21 @@ footer { background:#060e1c; border-top:1px solid var(--border); padding:60px 48
 </footer>
 
 <script>
-// Tab switching
-document.querySelectorAll('.tab').forEach(tab => {
+// Tab switching with filtering
+const tabs = document.querySelectorAll('.tab');
+const newsItems = document.querySelectorAll('.news-item');
+tabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tabs.forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
+    const category = tab.dataset.category;
+    newsItems.forEach(item => {
+      if (category === 'all' || item.dataset.category === category) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
+    });
   });
 });
 
