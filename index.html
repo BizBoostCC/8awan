@@ -67,7 +67,7 @@ h2 { font-family:'Noto Serif TC',serif; font-size:clamp(26px,4vw,40px); font-wei
 .service-card::before { content:''; position:absolute; bottom:0; left:0; width:0; height:3px; background:var(--orange); transition:width .4s; }
 .service-card:hover { background:var(--navy-mid); }
 .service-card:hover::before { width:100%; }
-.service-icon { font-size:36px; margin-bottom:20px; display:block; }
+.service-icon { width:32px; height:3px; background:var(--orange); margin-bottom:20px; display:block; }
 .service-card h3 { font-family:'Noto Serif TC',serif; font-size:18px; font-weight:700; margin-bottom:12px; }
 .service-card p { font-size:13px; color:var(--muted); line-height:1.8; font-weight:300; }
 .service-num { position:absolute; top:28px; right:28px; font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--border); line-height:1; }
@@ -252,9 +252,9 @@ footer { background:#060e1c; border-top:1px solid var(--border); padding:60px 48
     <p class="services-desc">從家用分離式冷氣到大型中央空調系統，<br>承接政府標案及企業工程，<br>提供安裝、維護保養一站式服務。</p>
   </div>
   <div class="services-grid">
-    <div class="service-card"><span class="service-num">01</span><span class="service-icon">❄️</span><h3>政府台銀採購</h3><p>冷氣機、洗衣機、電冰箱、電視機、LED燈具、飲水機。專業承接台灣銀行政府採購業務。</p></div>
-    <div class="service-card"><span class="service-num">02</span><span class="service-icon">🏢</span><h3>中央空調工程</h3><p>冰水主機系統、VRV商用多聯變頻空調、箱型冷氣機。大型建築空調整體規劃設計施工。</p></div>
-    <div class="service-card"><span class="service-num">03</span><span class="service-icon">🔧</span><h3>冷氣清洗保養</h3><p>定期清洗保養，延長設備壽命，維持最佳冷房效率，降低電費支出。專業認證師傅到府服務。</p></div>
+    <div class="service-card"><span class="service-num">01</span><span class="service-icon"></span><h3>政府台銀採購</h3><p>冷氣機、洗衣機、電冰箱、電視機、LED燈具、飲水機。專業承接台灣銀行政府採購業務。</p></div>
+    <div class="service-card"><span class="service-num">02</span><span class="service-icon"></span><h3>中央空調工程</h3><p>冰水主機系統、VRV商用多聯變頻空調、箱型冷氣機。大型建築空調整體規劃設計施工。</p></div>
+    <div class="service-card"><span class="service-num">03</span><span class="service-icon"></span><h3>冷氣清洗保養</h3><p>定期清洗保養，延長設備壽命，維持最佳冷房效率，降低電費支出。專業認證師傅到府服務。</p></div>
   </div>
 </section>
 
@@ -320,13 +320,13 @@ footer { background:#060e1c; border-top:1px solid var(--border); padding:60px 48
     <a href="#" class="see-all">查看所有消息 →</a>
   </div>
   <div class="news-tabs">
-    <div class="tab active">所有消息</div>
-    <div class="tab">企業公告</div>
-    <div class="tab">促銷商品</div>
+    <div class="tab active" data-category="all">所有消息</div>
+    <div class="tab" data-category="announce">企業公告</div>
+    <div class="tab" data-category="promo">促銷商品</div>
   </div>
   <div class="news-grid">
     <!-- Featured：夏季促銷 (Unsplash / Thanos Pal) -->
-    <div class="news-card featured">
+    <div class="news-card featured" data-category="promo">
       <div class="news-card-img-wrap">
         <span class="news-tag">促銷</span>
         <img class="news-card-img" src="https://images.unsplash.com/photo-1601643157091-ce5c665179ab?w=800&auto=format&fit=crop&q=80" alt="夏季空調促銷">
@@ -339,7 +339,7 @@ footer { background:#060e1c; border-top:1px solid var(--border); padding:60px 48
       </div>
     </div>
     <!-- Card 2：企業公告 (Unsplash / Alex Kotliarskyi) -->
-    <div class="news-card">
+    <div class="news-card" data-category="announce">
       <div class="news-card-img-wrap">
         <span class="news-tag">公告</span>
         <img class="news-card-img" src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=500&auto=format&fit=crop&q=80" alt="企業公告">
@@ -351,7 +351,7 @@ footer { background:#060e1c; border-top:1px solid var(--border); padding:60px 48
       </div>
     </div>
     <!-- Card 3：政府採購 (Unsplash / Nastuh Abootalebi) -->
-    <div class="news-card">
+    <div class="news-card" data-category="purchase">
       <div class="news-card-img-wrap">
         <span class="news-tag">採購</span>
         <img class="news-card-img" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&auto=format&fit=crop&q=80" alt="政府採購">
@@ -428,10 +428,20 @@ footer { background:#060e1c; border-top:1px solid var(--border); padding:60px 48
 </footer>
 
 <script>
-document.querySelectorAll('.tab').forEach(tab => {
+const tabs = document.querySelectorAll('.tab');
+const newsCards = document.querySelectorAll('.news-card');
+tabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tabs.forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
+    const category = tab.dataset.category;
+    newsCards.forEach(card => {
+      if (category === 'all' || card.dataset.category === category) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
   });
 });
 const observer = new IntersectionObserver((entries) => {
