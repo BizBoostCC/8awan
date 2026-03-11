@@ -151,11 +151,27 @@ footer { background:#060e1c; border-top:1px solid var(--border); padding:60px 48
 .social-link { width:36px; height:36px; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--muted); text-decoration:none; font-size:14px; transition:all .2s; }
 .social-link:hover { border-color:var(--orange); color:var(--orange); }
 
+/* Hamburger Menu */
+.hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; width:32px; height:32px; cursor:pointer; z-index:201; background:none; border:none; padding:0; }
+.hamburger span { display:block; width:24px; height:2px; background:var(--silver); transition:all .3s; }
+.hamburger.active span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+.hamburger.active span:nth-child(2) { opacity:0; }
+.hamburger.active span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
+.mobile-menu { position:fixed; top:0; right:-100%; width:280px; height:100vh; background:var(--navy-mid); z-index:200; padding:80px 32px 40px; display:flex; flex-direction:column; gap:0; transition:right .35s ease; border-left:1px solid var(--border); overflow-y:auto; }
+.mobile-menu.active { right:0; }
+.mobile-menu a { color:var(--silver); text-decoration:none; font-size:15px; padding:16px 0; border-bottom:1px solid var(--border); transition:color .2s; display:block; }
+.mobile-menu a:hover, .mobile-menu a.current { color:var(--orange); }
+.mobile-menu .mobile-cta { background:var(--orange); color:white; text-align:center; padding:14px; margin-top:24px; font-weight:500; border:none; }
+.mobile-menu .mobile-cta:hover { background:var(--orange-light); }
+.mobile-overlay { position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:199; opacity:0; visibility:hidden; transition:all .3s; }
+.mobile-overlay.active { opacity:1; visibility:visible; }
+
 @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
 
 @media(max-width:900px) {
   nav { padding:0 24px; }
-  .nav-links,.nav-cta { display:none; }
+  .nav-links { display:none; }
+  .hamburger { display:flex; }
   section { padding:64px 24px; }
   .hero-content { padding:100px 24px 160px; }
   .hero-stats { right:24px; bottom:40px; gap:24px; }
@@ -189,7 +205,20 @@ footer { background:#060e1c; border-top:1px solid var(--border); padding:60px 48
     <li><a href="news_list.html">最新消息</a></li>
     <li><a href="#contact" class="nav-cta">立即詢價</a></li>
   </ul>
+  <button class="hamburger" aria-label="選單"><span></span><span></span><span></span></button>
 </nav>
+<div class="mobile-overlay"></div>
+<div class="mobile-menu">
+  <a href="index.html" class="current">首頁</a>
+  <a href="intro.html">關於我們</a>
+  <a href="product_list.html">政府台銀採購</a>
+  <a href="service_list.html">中央空調</a>
+  <a href="link.html">品牌專區</a>
+  <a href="album_list.html">實績案例</a>
+  <a href="news_list.html">最新消息</a>
+  <a href="join.html">工班招募</a>
+  <a href="mailto:bayawang1688@gmail.com" class="mobile-cta">立即詢價</a>
+</div>
 
 <!-- HERO：大型空調外機機組 (Unsplash / Álvaro Bernal) -->
 <section class="hero">
@@ -418,6 +447,13 @@ document.querySelectorAll('.service-card,.news-card,.branch-card,.gallery-item')
 window.addEventListener('scroll', () => {
   document.querySelector('nav').style.background = window.scrollY>60 ? 'rgba(10,22,40,0.99)' : 'rgba(10,22,40,0.94)';
 });
+// Hamburger menu
+const hamburger = document.querySelector('.hamburger');
+const mobileMenu = document.querySelector('.mobile-menu');
+const mobileOverlay = document.querySelector('.mobile-overlay');
+function toggleMenu() { hamburger.classList.toggle('active'); mobileMenu.classList.toggle('active'); mobileOverlay.classList.toggle('active'); document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : ''; }
+hamburger.addEventListener('click', toggleMenu);
+mobileOverlay.addEventListener('click', toggleMenu);
 </script>
 </body>
 </html>
